@@ -24,8 +24,9 @@ const Hero = () => {
 
                 <div className="hero__image-container">
                     <div className="hero__image">
-
+                        <Image src='/next.svg' alt='next' fill className='object-contain'></Image>
                     </div>
+                    <div className="hero__image-overlay"></div>
                 </div>
             </div>
         </div>
