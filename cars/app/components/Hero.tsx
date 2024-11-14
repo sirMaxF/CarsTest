@@ -1,6 +1,6 @@
 "use client";
 
-// https://vk.com/video-225998418_456239150?t=26m42s
+// https://vk.com/video-225998418_456239150?t=52m5s
 
 import Image from 'next/image';
 import CustomButton from './CustomButton';
@@ -22,7 +22,7 @@ const Hero = () => {
                     handleClick={handleScroll}
                 ></CustomButton>
 
-                <div className="hero__image-container">
+                <div className="hero__image-container relative w-96 h-96">
                     <div className="hero__image">
                         <Image src='/next.svg' alt='next' fill className='object-contain'></Image>
                     </div>
