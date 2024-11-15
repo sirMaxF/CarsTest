@@ -1,8 +1,15 @@
+'use client'
+
 import Image from "next/image";
 import { CustomFilter, Hero, SearchBar } from "./components";
+import { fetchCars } from "@/utils";
 
 export default function Home() {
+  const allCars = fetchCars();
+  const isEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+
   return (
+
     <main className="overflow-hidden">
       <Hero />
 
@@ -19,6 +26,15 @@ export default function Home() {
             <CustomFilter title='fuel' />
             <CustomFilter title='fuel' />
           </div>
+
+          {!isEmpty
+            ? (<section>WE HAVE CARS</section>)
+            : (
+              <div>
+                <h2>Нет результатов!</h2>
+              </div>
+            )
+          }
 
         </div>
       </div>

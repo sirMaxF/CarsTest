@@ -24,3 +24,26 @@ export const footerLinks = [
         ]
     },
 ]
+
+export const manufacturers = [
+    'Audi',
+    'Alfa Romeo',
+    'BMW',
+    'Buick',
+    'Chery',
+    'Chevrolet',
+    'Chrysler',
+    'Citroen',
+    'Dacia',
+    'Daewoo',
+    'Dodge',
+    'Fiat',
+    'Ford',
+    'Geely',
+    'Honda',
+    'Hyundai',
+    'Infiniti',
+    'Kia',
+    'Land Rover',
+    'Lexus'
+]
