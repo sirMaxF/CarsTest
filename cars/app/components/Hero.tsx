@@ -1,6 +1,6 @@
 "use client";
 
-// https://vk.com/video-225998418_456239150?t=1h25m13s
+// https://vk.com/video-225998418_456239150?t=1h26m57s
 
 import Image from 'next/image';
 import CustomButton from './CustomButton';

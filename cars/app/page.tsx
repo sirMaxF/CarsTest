@@ -1,12 +1,12 @@
-'use client'
-
 import Image from "next/image";
-import { CustomFilter, Hero, SearchBar } from "./components";
+import { CarCard, CustomFilter, Hero, SearchBar } from "./components";
 import { fetchCars } from "@/utils";
 
-export default function Home() {
-  const allCars = fetchCars();
+export default async function Home() {
+  const allCars = await fetchCars();
   const isEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+  console.log('Pyfx' + allCars)
+
 
   return (
 
@@ -28,7 +28,15 @@ export default function Home() {
           </div>
 
           {!isEmpty
-            ? (<section>WE HAVE CARS</section>)
+            ? (
+              <section>
+                <div className="home__cars-wrapper">
+                  {allCars?.map(item => (
+                    <CarCard />
+                  ))}
+                </div>
+              </section>
+            )
             : (
               <div>
                 <h2>Нет результатов!</h2>
