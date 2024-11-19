@@ -9,3 +9,11 @@
 .hero__title {
   @apply 2xl:text-[72px] sm:text-[64px] text-[50px] font-extrabold
 }
+
+.car-card {
+  @apply bg-slate-300 rounded-[15px] p-5 transition-all hover:bg-indigo-300
+}
+
+.home__cars-wrapper {
+   @apply flex flex-wrap gap-5
+}

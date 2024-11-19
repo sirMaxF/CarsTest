@@ -5,7 +5,7 @@ import { fetchCars } from "@/utils";
 export default async function Home() {
   const allCars = await fetchCars();
   const isEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-  console.log('Pyfx' + allCars)
+  // console.log('Pyfx' + allCars)
 
 
   return (
