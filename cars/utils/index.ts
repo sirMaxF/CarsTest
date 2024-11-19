@@ -1,3 +1,5 @@
+// загрузка данных о машинах
+
 export const fetchCars = async () => {
     const url = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla';
     const options = {
@@ -17,3 +19,5 @@ export const fetchCars = async () => {
         console.error(error);
     }
 }
+
+

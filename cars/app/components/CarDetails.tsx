@@ -17,32 +17,35 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
             className=''
         >
             <div className="fixed inset-0 bg-black bg-opacity-25">
-                <DialogPanel className='relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white text-left shadow-xsl transition-all flex flex-col gap-5'>
+                <DialogPanel className='relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white text-left shadow-xl transition-all flex flex-col gap-5'>
                     {/* кнопка закрытия */}
                     <button type="button" className="absolute top-2 right-2 z-10 w-fit p-2 bg-sky-800 rounded-full" onClick={closeModal}>&#x2715;</button>
 
 
                     {/* картинки */}
+                    {/* одно большое изобр */}
                     <div className="flex-1 flex-col flex gap-3">
                         <div className="relative w-full h-40 bg-cover bg-cent rounded-lg">
-                            <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                            <Image src='https://i.sstatic.net/2tv51.png' fill priority alt='Подпись' className='object-contain' />
                         </div>
 
+                        {/* три мелких изобр */}
                         <div className="flex gap-3">
-                            <div className="flex-1 relative w-full h-24 bg-cyan-400">
-                                <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                            <div className="flex gap-3 w-10">
+                                <div className="flex-1 relative w-full h-24 bg-cyan-400">
+                                    <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex gap-3">
-                            <div className="flex-1 relative w-full h-24 bg-cyan-400">
-                                <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                            <div className="flex gap-3">
+                                <div className="flex-1 relative w-full h-24 bg-cyan-400">
+                                    <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex gap-3">
-                            <div className="flex-1 relative w-full h-24 bg-cyan-400">
-                                <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
-                            </div>
-                        </div>
+                            <div className="flex gap-3">
+                                <div className="flex-1 relative w-full h-24 bg-cyan-400">
+                                    <Image src='/next.svg' fill priority alt='Подпись' className='object-contain' />
+                                </div>
+                            </div></div>
                     </div>
 
                     {/* содержимое диалогового окна */}
@@ -52,7 +55,14 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                             {car.make} {car.model}
                         </h2>
 
-                        <div className="mt-3 flex flex-wrap gap-4"></div>
+                        <div className="mt-3 flex flex-wrap gap-4">
+                            {Object.entries(car).map(([key, value]) => (
+                                <div key={key} className="flex justify-between gap-5 w-full text-right">
+                                    <h4 className="text-grey capitalize">{key.split('_').join(' ')}</h4>
+                                    <p className="text-black-100 font-semibold">{value}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                 </DialogPanel>
