@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CarCard, CustomFilter, Hero, SearchBar } from "./components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "./components";
 import { fetchCars } from "@/utils";
 import { fuels, yearsOfProduction } from "@/constants";
 import { searchParamsProps } from "@/types";
@@ -28,10 +28,10 @@ export default async function Home({ searchParams }: searchParamsProps) {
         </div>
 
         <div className="home__filters">
-          <div className="home__filters-container flex gap-3">          <SearchBar />
-
+          <div className="home__filters-container flex gap-3">
+            <SearchBar />
             <CustomFilter title='fuel' options={fuels} />
-            <CustomFilter title='fuel' options={yearsOfProduction} />
+            <CustomFilter title='year' options={yearsOfProduction} />
           </div>
 
           {!isEmpty
@@ -42,6 +42,11 @@ export default async function Home({ searchParams }: searchParamsProps) {
                     <CarCard key={index} car={item} />
                   ))}
                 </div>
+
+                <ShowMore
+                  pageNumber={(searchParams.pageNumber || 10) / 10}
+                  isNext={(searchParams.limit || 10) > allCars.length}
+                />
               </section>
             )
             : (
