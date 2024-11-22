@@ -1,3 +1,4 @@
+import exp from "constants";
 import { MouseEventHandler } from "react";
 
 export interface CustomButtonProps {
@@ -28,4 +29,26 @@ export interface CarProps {
     model: string;
     transmission: string;
     year: number;
+}
+
+export interface FiltersProps {
+    manufacturer: string,
+    year: number,
+    limit: number,
+    fuel: string,
+    model: string,
+}
+
+export interface searchParamsProps {
+    searchParams: FiltersProps
+}
+
+export interface OptionProps {
+    title: string;
+    value: string;
+}
+
+export interface CustomFilterProps {
+    title: string;
+    options: OptionProps[];
 }

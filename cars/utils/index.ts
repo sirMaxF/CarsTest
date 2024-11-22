@@ -1,7 +1,11 @@
 // загрузка данных о машинах
 
-export const fetchCars = async () => {
-    const url = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla';
+import { FiltersProps } from "@/types";
+
+export const fetchCars = async (filters: FiltersProps) => {
+    const { manufacturer, limit, year, fuel, model } = filters;
+
+    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=${model}&make=${manufacturer}&year=${year}&limit=${limit}&type_fuel=${fuel}`;
     const options = {
         method: 'GET',
         headers: {
