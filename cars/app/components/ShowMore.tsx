@@ -13,6 +13,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
     const handleNavigation = () => {
         const newLimit = (pageNumber + 1) * 10;
         const newPathname = updateSearchParams('limit', `${newLimit}`)
+        router.push(newPathname)
     }
 
     return (
@@ -21,7 +22,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
                 <CustomButton
                     title='Показать больше'
                     btnType='button'
-                    containerStyles='bg-cyan-400 text-white'
+                    containerStyles='bg-cyan-400 text-white rounded-lg py-1 px-2'
                     handleClick={handleNavigation}
                 />
             )}
