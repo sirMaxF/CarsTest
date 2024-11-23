@@ -1,8 +1,5 @@
 'use client'
 
-// данная страница является аналогом файла SearchBar-ServerSide лежащщего в той же директории
-// разница только в том что pageServerSide реализует логику сервер-сайда в Nextjs
-
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import SearchManufacturer from './SearchManufacturer'
@@ -20,29 +17,51 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
     </button>
 )
 
-const SearchBar = ({ setManufacturer, setModel }) => {
-    const [searchManufacturer, setSearchManufacturer] = useState('');
-    const [searchModel, setSearchModel] = useState('');
+const SearchBar = () => {
+    const [manufacturer, setManufacturer] = useState('');
+    const [model, setModel] = useState('');
     const router = useRouter();
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (searchManufacturer === '' && searchModel === '') {
+        if (manufacturer === '' && model === '') {
             return alert('Заполните данные формы!')
         }
 
-        setModel(searchModel);
-        setManufacturer(searchManufacturer);
+        updateSearchParanms(model.toLowerCase(), manufacturer.toLowerCase());
     }
+
+    // функция передачи параметров из форм в строку запроса
+    const updateSearchParanms = (model: string, manufacturer: string) => {
+        const searchParams = new URLSearchParams(window.location.search);
+
+        if (model) {
+            searchParams.set('model', model);
+        } else {
+            searchParams.delete('model')
+        }
+
+        if (manufacturer) {
+            searchParams.set('manufacturer', manufacturer);
+        } else {
+            searchParams.delete('manufacturer')
+        }
+
+        const newPathname = `${window.location.pathname}?${searchParams.toString()}`
+
+        router.push(newPathname)
+
+
+    };
 
     return (
         <form className='searchbar flex gap-3' onSubmit={handleSearch}>
             {/* поиск по производителю */}
             <div className="searchbar__item">
                 <SearchManufacturer
-                    selected={searchManufacturer}
-                    setSelected={setSearchManufacturer}
+                    manufacturer={manufacturer}
+                    setManufacturer={setManufacturer}
                 />
                 <SearchButton otherClasses='sm:hidden' />
             </div>
@@ -58,8 +77,8 @@ const SearchBar = ({ setManufacturer, setModel }) => {
                 <input
                     type="text"
                     name='model'
-                    value={searchModel}
-                    onChange={(e) => setSearchModel(e.target.value)}
+                    value={model}
+                    onChange={(e) => setModel(e.target.value)}
                     placeholder='Model'
                     className='searchbar__input'
                 />
